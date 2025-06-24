@@ -2,7 +2,7 @@ name: ESIOS Daily Data Fetch
 
 on:
   schedule:
-    - cron: "35 12 * * *"  # Ejecuta cada día a las 12:35 UTC
+    - cron: "01 00 * * *"  # Ejecuta cada día a las 12:35 UTC
   workflow_dispatch:       # Permite ejecución manual desde GitHub UI
 
 jobs:
