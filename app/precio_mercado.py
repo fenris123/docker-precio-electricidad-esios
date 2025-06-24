@@ -36,7 +36,6 @@ ENDPOINT = 'indicators/'
 
 # Obtener la fecha de hoy en formato YYYY-MM-DD
 
-
 fecha = datetime.utcnow().date().isoformat()
 
 
@@ -45,17 +44,18 @@ params = {
     'end_date': f'{fecha}T23'
 }
 
-
 # ID del indicador
 INDICATOR = '600'
 url = URL_BASE + ENDPOINT + INDICATOR
-
 
 # Realizar la solicitud GET
 res = requests.get(url, headers=headers, params=params)
 
 # Procesar la respuesta en formato JSON
 data = res.json()
+
+
+
 
 # Filtrar los datos para obtener solo los registros de "España" (geo_id = 3)
 filtered_data = [record for record in data.get('indicator', {}).get('values', []) if record.get('geo_id') == 3]
@@ -79,8 +79,18 @@ print(f"Datos guardados en {nombre_archivo}")
 
 
 
+
 # Crear figura y ejes
 fig, ax = plt.subplots(figsize=(10, 5))
+
+# Fondo gris moderado para todo el lienzo (figura)
+fig.patch.set_facecolor('#d3d3d3')  # gris claro, puedes probar otros tonos (#e0e0e0, #cccccc...)
+
+# Fondo blanco para el área de la gráfica
+ax.set_facecolor('white')
+
+# Fijar tamaño de la gráfica en el lienzo
+ax = fig.add_axes([0.3, 0.3, 0.5, 0.5])
 
 # Formatear la hora para que solo muestre la hora (sin fecha)
 df['hora_solo'] = df['hora'].dt.strftime('%H:%M')
@@ -90,12 +100,12 @@ ax.plot(df['hora_solo'], df['precio'], marker='o', color='royalblue', linestyle=
 
 # Títulos y etiquetas
 ax.set_title(f"Precio diario de la electricidad - {fecha}", fontsize=16,fontweight='bold')
-ax.set_xlabel("Hora del día", fontsize=14)
-ax.set_ylabel("Precio (€/MWh)", fontsize=14)
+ax.set_xlabel("Hora del día", fontsize=12)
+ax.set_ylabel("Precio (€/MWh)", fontsize=12)
 
 # Quitar los bordes superior e izquierdo
 ax.spines['top'].set_visible(False)
-ax.spines['left'].set_visible(False)
+ax.spines['right'].set_visible(False)
 
 # Quitar grid
 ax.grid(False)
