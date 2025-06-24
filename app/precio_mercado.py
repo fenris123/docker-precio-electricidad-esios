@@ -77,23 +77,21 @@ df.to_csv(nombre_archivo, index=False)
 
 print(f"Datos guardados en {nombre_archivo}")
 
-# Crear la figura y el eje
-plt.figure(figsize=(12, 6))
-plt.plot(df['hora'], df['precio'], marker='o', linestyle='-', color='royalblue', linewidth=2)
 
-# Mejorar la visualización
-plt.title(f'Precio horario de la electricidad en España ({fecha})')
-plt.xlabel('Hora')
-plt.ylabel('Precio (€ / MWh)')
-plt.grid(True)
-plt.xticks(rotation=45)
-plt.tight_layout()
 
-# Guardar la figura
-nombre_grafica = f"Grafico_{fecha}.png"
-plt.savefig(nombre_grafica)
+# Crear figura y ejes
+fig, ax = plt.subplots(figsize=(10, 5))
 
-print(f"Gráfica guardada en {nombre_grafica}")
+# Formatear la hora para que solo muestre la hora (sin fecha)
+df['hora_solo'] = df['hora'].dt.strftime('%H:%M')
+
+# Graficar
+ax.plot(df['hora_solo'], df['precio'], marker='o', color='royalblue', linestyle='-')
+
+# Títulos y etiquetas
+ax.set_title(f"Precio diario de la electricidad - {fecha}", fontsize=16,fontweight='bold')
+ax.set_xlabel("Hora del día", fontsize=14)
+ax.set_ylabel("Precio (€/MWh)", fontsize=14)
 
 
 
