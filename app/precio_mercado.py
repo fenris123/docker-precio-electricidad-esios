@@ -131,3 +131,6 @@ plt.tight_layout()
 # Guardar gráfico
 nombre_grafica = f"Grafico_{fecha}.png"
 plt.savefig(nombre_grafica)
+
+print(f"Grafica guardada en {nombre_grafica}")
+
