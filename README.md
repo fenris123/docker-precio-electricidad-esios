@@ -20,10 +20,27 @@ Crear un contenedor que, de forma automatizada, obtenga diariamente el precio de
 En desarrollo. 
 
 
-## Carpeta resultados.
-El script genera un archivo CSV con los datos descargados y lo guarda en la carpeta resultados. Por favor, asegúrate de que esta carpeta exista en el directorio raíz del repositorio antes de ejecutar el script, para evitar errores al guardar los archivos.
+## Configuración del Token de ESIOS
+Para que el script funcione correctamente y pueda acceder a la API de ESIOS, es necesario proporcionar un token de autenticación válido.
 
-Si la carpeta no existe, créala manualmente.
+### ¿Qué es el token?
+El token es una clave personal que obtienes al registrarte en la API de ESIOS y que permite autenticar tu acceso a los datos.
+
+### Cómo configurar el token
+En local: debes establecer la variable de entorno TOKEN_ESIOS en tu sistema operativo antes de ejecutar el script. Por ejemplo:
+
+export TOKEN_ESIOS="tu_token_aqui"       # Linux / macOS
+set TOKEN_ESIOS=tu_token_aqui            # Windows PowerShell
+
+### En Docker: 
+al ejecutar el contenedor, pasa el token como variable de entorno:
+
+docker run -e TOKEN_ESIOS="tu_token_aqui" nombre_del_contenedor
+
+
+### En GitHub Actions: 
+configura el token como un Secret en GitHub y asigna el valor a la variable de entorno TOKEN_ESIOS dentro del workflow.
+
 
 
 ## 📄 Licencia
