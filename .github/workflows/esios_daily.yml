@@ -31,7 +31,7 @@ jobs:
 
 
       - name: Upload filtered_data.json artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: filtered-data
           path: filtered_data.json
