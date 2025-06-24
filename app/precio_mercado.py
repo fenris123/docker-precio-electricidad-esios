@@ -89,8 +89,8 @@ fig.patch.set_facecolor('#4A90E2')  # gris claro, puedes probar otros tonos (#e0
 # Fondo blanco para el área de la gráfica
 ax.set_facecolor('white')
 
-# Fijar tamaño de la gráfica en el lienzo
-ax = fig.add_axes([0.2, 0.2, 0.6, 0.6])
+# Ajusta márgenes para hacer el área gráfica más pequeña dentro de la figura:
+plt.subplots_adjust(left=0.2, right=0.8, top=0.8, bottom=0.2)
 
 # Formatear la hora para que solo muestre la hora (sin fecha)
 df['hora_solo'] = df['hora'].dt.strftime('%H:%M')
