@@ -5,15 +5,13 @@ Created on Tue Mar 11 11:38:06 2025
 @author: fenris123
 """
 
-
-
+import sys
 import os
-import requests
-import json
 from datetime import datetime
+
+import requests
 import pandas as pd
 import matplotlib.pyplot as plt
-
 
 
 # Obtener el token desde la variable de entorno (seteada en GitHub Secrets)
@@ -46,10 +44,16 @@ params = {
 
 # ID del indicador
 INDICATOR = '600'
-url = URL_BASE + ENDPOINT + INDICATOR
+URL = URL_BASE + ENDPOINT + INDICATOR
 
 # Realizar la solicitud GET
-res = requests.get(url, headers=headers, params=params)
+
+try:
+    res = requests.get(URL, headers=headers, params=params, timeout=10)
+
+except requests.exceptions.Timeout:
+    print("Error: La solicitud tardó demasiado y fue cancelada.")
+    sys.exit()
 
 # Procesar la respuesta en formato JSON
 data = res.json()
@@ -99,7 +103,7 @@ df['hora_solo'] = df['hora'].dt.strftime('%H:%M')
 ax.plot(df['hora_solo'], df['precio'], marker='o', color='royalblue', linestyle='-')
 
 # Títulos y etiquetas
-ax.set_title(f"Precio de la electricidad (Mercado diario) - {fecha}", fontsize=16,fontweight='bold')
+ax.set_title(f"Precio diario de la electricidad - {fecha}", fontsize=16,fontweight='bold')
 ax.set_xlabel("Hora del día", fontsize=12)
 ax.set_ylabel("Precio (€/MWh)", fontsize=12)
 
@@ -128,4 +132,3 @@ plt.tight_layout()
 # Guardar gráfico
 nombre_grafica = f"Grafico_{fecha}.png"
 plt.savefig(nombre_grafica)
-
