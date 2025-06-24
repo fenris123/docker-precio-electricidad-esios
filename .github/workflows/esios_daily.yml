@@ -27,4 +27,4 @@ jobs:
           pip install requests python-dotenv
 
       - name: Run precio_mercado.py script
-        run: python contenedor_python/precio_mercado.py
+        run: python app/precio_mercado.py
