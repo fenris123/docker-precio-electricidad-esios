@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+a# -*- coding: utf-8 -*-
 """
 Created on Tue Mar 11 11:38:06 2025
 
@@ -35,12 +35,12 @@ ENDPOINT = 'indicators/'
 # Obtener la fecha de hoy en formato YYYY-MM-DD
 
 
-start_date = datetime.utcnow().date().isoformat()
-end_date = datetime.utcnow().date().isoformat()
+fecha = datetime.utcnow().date().isoformat()
+
 
 params = {
-    'start_date': f'{start_date}T00',
-    'end_date': f'{end_date}T23'
+    'start_date': f'{fecha}T00',
+    'end_date': f'{fecha}T23'
 }
 
 
