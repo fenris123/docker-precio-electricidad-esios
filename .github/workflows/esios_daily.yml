@@ -34,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: datos_csv
-          path: precio_diario.csv
+          path: path: resultados/Resultados_*.csv
