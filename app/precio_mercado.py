@@ -99,7 +99,7 @@ df['hora_solo'] = df['hora'].dt.strftime('%H:%M')
 ax.plot(df['hora_solo'], df['precio'], marker='o', color='royalblue', linestyle='-')
 
 # Títulos y etiquetas
-ax.set_title(f"Precio diario de la electricidad - {fecha}", fontsize=16,fontweight='bold')
+ax.set_title(f"Precio de la electricidad (Mercado diario) - {fecha}", fontsize=16,fontweight='bold')
 ax.set_xlabel("Hora del día", fontsize=12)
 ax.set_ylabel("Precio (€/MWh)", fontsize=12)
 
