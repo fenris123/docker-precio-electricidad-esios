@@ -29,9 +29,14 @@ jobs:
       - name: Run precio_mercado.py script
         run: python app/precio_mercado.py
 
-
       - name: Upload precio_diario.csv artifact
         uses: actions/upload-artifact@v4
         with:
           name: datos_csv
           path: Resultados_*.csv
+
+      - name: Upload gráfica PNG artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: grafico_precio
+          path: Grafico_*.png
