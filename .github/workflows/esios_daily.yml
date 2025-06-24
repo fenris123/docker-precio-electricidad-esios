@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests python-dotenv
+          pip install requests pandas matplotlib
 
       - name: Run precio_mercado.py script
         run: python app/precio_mercado.py
