@@ -30,8 +30,8 @@ jobs:
         run: python app/precio_mercado.py
 
 
-      - name: Upload filtered_data.json artifact
+      - name: Upload precio_diario.csv artifact
         uses: actions/upload-artifact@v4
         with:
-          name: filtered-data
-          path: filtered_data.json
+          name: datos_csv
+          path: precio_diario.csv
