@@ -84,13 +84,13 @@ print(f"Datos guardados en {nombre_archivo}")
 fig, ax = plt.subplots(figsize=(10, 5))
 
 # Fondo gris moderado para todo el lienzo (figura)
-fig.patch.set_facecolor('#d3d3d3')  # gris claro, puedes probar otros tonos (#e0e0e0, #cccccc...)
+fig.patch.set_facecolor('#4A90E2')  # gris claro, puedes probar otros tonos (#e0e0e0, #cccccc...)
 
 # Fondo blanco para el área de la gráfica
 ax.set_facecolor('white')
 
 # Fijar tamaño de la gráfica en el lienzo
-ax = fig.add_axes([0.3, 0.3, 0.5, 0.5])
+ax = fig.add_axes([0.2, 0.2, 0.6, 0.6])
 
 # Formatear la hora para que solo muestre la hora (sin fecha)
 df['hora_solo'] = df['hora'].dt.strftime('%H:%M')
@@ -106,6 +106,17 @@ ax.set_ylabel("Precio (€/MWh)", fontsize=12)
 # Quitar los bordes superior e izquierdo
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
+
+# Crear lista de horas pares
+horas_pares = list(range(0, 24, 2))
+
+# Poner ticks solo en esas horas
+ax.set_xticks(horas_pares)
+
+# Formatear las etiquetas como 'HH:00'
+etiquetas = [f"{h:02d}:00" for h in horas_pares]
+ax.set_xticklabels(etiquetas)
+
 
 # Quitar grid
 ax.grid(False)
