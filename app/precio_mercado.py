@@ -93,7 +93,18 @@ ax.set_title(f"Precio diario de la electricidad - {fecha}", fontsize=16,fontweig
 ax.set_xlabel("Hora del día", fontsize=14)
 ax.set_ylabel("Precio (€/MWh)", fontsize=14)
 
+# Quitar los bordes superior e izquierdo
+ax.spines['top'].set_visible(False)
+ax.spines['left'].set_visible(False)
 
+# Quitar grid
+ax.grid(False)
 
+# Mejorar legibilidad del eje X
+plt.xticks(rotation=45)
+plt.tight_layout()
 
+# Guardar gráfico
+nombre_grafica = f"Grafico_{fecha}.png"
+plt.savefig(nombre_grafica)
 
