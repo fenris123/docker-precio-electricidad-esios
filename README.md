@@ -46,17 +46,20 @@ configura el token como un Secret en GitHub y asigna el valor a la variable de e
 ## Comandos docker en windows (requiere instalar docker desktop) 
 
 Ejecuta docker desktop
-Usando el CMD, navega hasta el directorio donde quieras trabajar con el docker 
+Abre el cdm EN MODO ADMINISTRADOR
+Ve a la carpeta donde vayas a trabajar y guardar los archivos
 
-### Comandos a ejecutar: 
+### Comandos a ejecutar (WINDOWS): 
 
+Copia y pega lo siguiente en el cmd (REPETIMOS: EN MODO ADMINISTRADOR)
 git clone https://github.com/tu-usuario/docker-precio-electricidad-esios   (Cambia el usuario por tu usuario de github, o el mio si lo copias desde el)
 
-cd docker-precio-electricidad-esios
+cd docker-precio-electricidad-esios   
 
-docker build -t precio-electricidad
+docker build -t precio-electricidad .    
 
-docker run --rm -e TOKEN_ESIOS="tu_token_esios_aqui" precio-electricidad
+docker run --rm -e TOKEN_ESIOS="METER AQUI TU TOKEN" -v C:\espaciodocker\docker-precio-electricidad-esios\resultados:/appcode/resultados precio-electricidad
+
 
 
 ## 📄 Licencia
