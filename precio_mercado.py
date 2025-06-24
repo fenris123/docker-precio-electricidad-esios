@@ -10,7 +10,7 @@ Created on Tue Mar 11 11:38:06 2025
 import os
 import requests
 import json
-
+from datetime import datetime
 
 
 
@@ -32,8 +32,8 @@ URL_BASE = 'https://api.esios.ree.es/'
 ENDPOINT = 'indicators/'
 
 
-start_date = input("Introduzca la fecha de inicio (YYYY-MM-DD): ")
-end_date = input("Introduzca la fecha de final (YYYY-MM-DD): ")
+start_date = datetime.utcnow().date().isoformat()
+end_date = datetime.utcnow().date().isoformat()
 
 params = {
     'start_date': f'{start_date}T00',
