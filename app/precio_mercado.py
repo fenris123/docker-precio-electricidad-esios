@@ -11,7 +11,7 @@ import os
 import requests
 import json
 from datetime import datetime
-
+import pandas as pd
 
 
 # Obtener el token desde la variable de entorno (seteada en GitHub Secrets)
@@ -58,8 +58,16 @@ data = res.json()
 # Filtrar los datos para obtener solo los registros de "España" (geo_id = 3)
 filtered_data = [record for record in data.get('indicator', {}).get('values', []) if record.get('geo_id') == 3]
 
-# Guardar los datos filtrados en un archivo .json
-with open('filtered_data.json', 'w') as f:
-    json.dump(filtered_data, f, indent=4)
+# Crear DataFrame a partir de los datos filtrados
+df = pd.DataFrame(filtered_data)
 
-print("Datos filtrados por España y guardados en filtered_data.json")
+# Seleccionar columnas y renombrar
+df = df[['datetime', 'value']].rename(columns={'datetime': 'hora', 'value': 'precio'})
+
+# Convertir la columna 'hora' a datetime para asegurarse de que sea reconocida como tal
+df['hora'] = pd.to_datetime(df['hora'])
+
+# Guardar como CSV
+df.to_csv('precio_diario.csv', index=False)
+
+print("Datos guardados en precio_diario.csv")
