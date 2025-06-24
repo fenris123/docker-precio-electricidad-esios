@@ -12,6 +12,8 @@ import requests
 import json
 from datetime import datetime
 import pandas as pd
+import matplotlib.pyplot as plt
+
 
 
 # Obtener el token desde la variable de entorno (seteada en GitHub Secrets)
@@ -74,3 +76,26 @@ nombre_archivo = f"Resultados_{fecha}.csv"
 df.to_csv(nombre_archivo, index=False)
 
 print(f"Datos guardados en {nombre_archivo}")
+
+# Crear la figura y el eje
+plt.figure(figsize=(12, 6))
+plt.plot(df['hora'], df['precio'], marker='o', linestyle='-', color='royalblue', linewidth=2)
+
+# Mejorar la visualización
+plt.title(f'Precio horario de la electricidad en España ({fecha})')
+plt.xlabel('Hora')
+plt.ylabel('Precio (€ / MWh)')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Guardar la figura
+nombre_grafica = f"Grafico_{fecha}.png"
+plt.savefig(nombre_grafica)
+
+print(f"Gráfica guardada en {nombre_grafica}")
+
+
+
+
+
