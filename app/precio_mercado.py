@@ -84,7 +84,7 @@ print(f"Datos guardados en {nombre_archivo}")
 fig, ax = plt.subplots(figsize=(10, 5))
 
 # Fondo gris moderado para todo el lienzo (figura)
-fig.patch.set_facecolor('#4A90E2')  # gris claro, puedes probar otros tonos (#e0e0e0, #cccccc...)
+fig.patch.set_facecolor('#d3d3d3')  # gris claro, puedes probar otros tonos (#e0e0e0, #cccccc...)
 
 # Fondo blanco para el área de la gráfica
 ax.set_facecolor('white')
