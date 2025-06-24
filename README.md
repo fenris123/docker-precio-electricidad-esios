@@ -13,11 +13,11 @@ El contenedor ejecuta un script que consulta la **API oficial de ESIOS**, genera
 - API de ESIOS (REE España)
 
 ## 📦 Objetivo
-Crear un contenedor que, de forma automatizada, obtenga diariamente el precio de la electricidad, genere un gráfico y almacene los datos, con posibilidad de usarse como parte de un pipeline de datos o para visualización pública.
+Crear un contenedor docker que, obtenga diariamente el precio de la electricidad, genere un gráfico y almacene los datos, con posibilidad de usarse como parte de un pipeline de datos o para visualización pública.  Ademas se ejecutara a diario en GitHub actions que guardara los resultados como artifacts consultables y descargables
 
 
 ## 🚧 Estado del proyecto
-En desarrollo. 
+Funcional
 
 
 ## Configuración del Token de ESIOS
