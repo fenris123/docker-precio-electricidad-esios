@@ -2,7 +2,7 @@
 FROM python:3.11-slim
 
 # Establece el directorio de trabajo dentro del contenedor
-WORKDIR /WDIR
+WORKDIR /appcode
 
 # Copiar el archivo requirements.txt (que contiene las dependencias)
 COPY requirements.txt .
