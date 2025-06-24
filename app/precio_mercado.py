@@ -72,8 +72,13 @@ df = df[['datetime', 'value']].rename(columns={'datetime': 'hora', 'value': 'pre
 # Convertir la columna 'hora' a datetime para asegurarse de que sea reconocida como tal
 df['hora'] = pd.to_datetime(df['hora'])
 
+# crear la carpeta resultados
+output_folder = "resultados"
+os.makedirs(output_folder, exist_ok=True)
+
+
 # Formar el nombre del archivo con la fecha introducida
-nombre_archivo = f"Resultados_{fecha}.csv"
+nombre_archivo = os.path.join(output_folder, f"Resultados_{fecha}.csv")
 
 # Guardar como CSV
 df.to_csv(nombre_archivo, index=False)
@@ -129,7 +134,7 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 
 # Guardar gráfico
-nombre_grafica = f"Grafico_{fecha}.png"
+nombre_grafica = os.path.join(output_folder, f"Grafico_{fecha}.png")
 plt.savefig(nombre_grafica)
 
 print(f"Grafica guardada en {nombre_grafica}")
