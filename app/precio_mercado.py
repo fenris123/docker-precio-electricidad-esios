@@ -68,7 +68,7 @@ df = df[['datetime', 'value']].rename(columns={'datetime': 'hora', 'value': 'pre
 df['hora'] = pd.to_datetime(df['hora'])
 
 # Formar el nombre del archivo con la fecha introducida
-nombre_archivo = f"resultados/Resultados_{fecha}.csv"
+nombre_archivo = f"Resultados_{fecha}.csv"
 
 # Guardar como CSV
 df.to_csv(nombre_archivo, index=False)
