@@ -1,0 +1,30 @@
+name: ESIOS Daily Data Fetch
+
+on:
+  schedule:
+    - cron: "35 12 * * *"  # Ejecuta cada día a las 12:35 UTC
+  workflow_dispatch:       # Permite ejecución manual desde GitHub UI
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    env:
+      TOKEN_ESIOS: ${{ secrets.TOKEN_ESIOS }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests python-dotenv
+
+      - name: Run precio_mercado.py script
+        run: python contenedor_python/precio_mercado.py
